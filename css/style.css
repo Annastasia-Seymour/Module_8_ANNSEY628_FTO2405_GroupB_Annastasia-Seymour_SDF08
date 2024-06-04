@@ -21,6 +21,10 @@
     --fs-h2: 2.25rem;
     --fs-h3: 1.25rem;
     --fs-body: 1rem;
+
+    --bs: 0.25em 0.25em 0.75em rgba(0,0,0,.25),
+            0.125em 0.125em 0.25em rgba(0,0,0,.15);
+            /*0.25 right 0.25 left 0.75 blur*/
 }
 
 @media (min-width: 800px) {
@@ -52,7 +56,7 @@ img {
     max-width: 100%;
 }
 
-strong { font-weight: var(--fw-bold)}
+strong { font-weight: var(--fw-bold)} /*ensure the name is set to bold*/
 
 /* Typography */
 
@@ -104,6 +108,13 @@ nav { display: none; }
     position: relative;
 }
 
+.intro__img {
+    box-shadow: var(--bs);
+}
+.section__subtitle--intro {
+    display: inline-block;
+}/*subtitle block is short when small screen , long(full length) when big screen (speak like cave-man)*/
+
 @media (min-width: 600px) {
     .intro {
         display: grid;
@@ -119,7 +130,7 @@ nav { display: none; }
     .intro__img {
         grid-area: img;
         min-width: 250px;
-        position: relative;
+        position: relative;/*puts the blue thingy to the back of the image*/
         z-index: 2; /* CSS property that controls the stacking order of overlapping elements on a page*/
     }    
 
@@ -133,3 +144,56 @@ nav { display: none; }
         width: calc(100% + 1.5em); /*aligns the width of the blue strip to be 100% at a 1.5em height*/
     }
 }
+
+
+
+/* My services section */
+
+.my-services {
+    background-color: var(--clr-dark);
+    background-image: url(../img/services-bg.jpg);
+    background-size: cover; /*prevents the text from repeating itself , can be related to images too remember Passenger counter*/
+    /*background-blend-mode: multiply ; /*to darken the background so the text appears clearer*/
+    color: var(--clr-light);
+    text-align: center;
+ 
+}
+.section__title--services{
+    color: var(--clr-accent);
+    position: relative;
+}/*can be moved to typography*/
+
+.section__title--services::after {
+    content: '';
+    display: block;
+    width: 2em;
+    height: 1px;
+    margin: 0.5em auto 1em;
+    background: var(--clr-light); /* use 'currentColor' to match with existing color */
+    opacity: 0.25 ; /*so it doesnt stand out as much*/
+}
+
+.service {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+@media (min-width:800px){
+    .services {
+        display: flex; /*this will place the paragraphs next to each other if you put text anwhere else it aligns the whole content*/
+        max-width:1000px;
+        margin: 0 auto;
+    }
+     /*prevents overlap no longer intersecting text. looks at sibling and adds 2em to the left*/
+    .service + .service {
+        margin-left: 2em;
+    }
+}
+
+
+
+
+
+
+
+
