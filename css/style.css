@@ -23,7 +23,7 @@
     --fs-body: 1rem;
 
     --bs: 0.25em 0.25em 0.75em rgba(0,0,0,.25),
-            0.125em 0.125em 0.25em rgba(0,0,0,.15);
+          0.125em 0.125em 0.25em rgba(0,0,0,.15);
             /*0.25 right 0.25 left 0.75 blur*/
 }
 
@@ -56,7 +56,30 @@ img {
     max-width: 100%;
 }
 
-strong { font-weight: var(--fw-bold)} /*ensure the name is set to bold*/
+strong { font-weight: var(--fw-bold);} /*ensure the name is set to bold*/
+
+:focus{
+    outline: 3px solid var(--clr-accent);
+    outline-offset: 3px; /*not a hover but focus state to draw attention to button*/
+}
+/* Buttons */
+
+.btn{
+    display:inline-block;
+    padding: .5em 2.5em;
+    background: var(--clr-accent) ;
+    color: var(--clr-dark);
+    text-decoration: none;
+    cursor: pointer;/*put on button instead of link*/
+    font-size: .8rem;
+    text-transform: uppercase;/*keeps text capped*/
+    letter-spacing: 2px;
+    font-weight: var(--fw-bold);
+    transition: transform 200ms ease-in-out;
+}
+.btn:hover {
+    transform: scale(1.1);
+}
 
 /* Typography */
 
@@ -86,7 +109,7 @@ h3 { font-size: var(--fs-h3) }
 
 .section__subtitle {
     margin: 0;
-    font-size: var(--fs-h3)
+    font-size: var(--fs-h3);
 }
 
 .section__subtitle--intro,
@@ -173,16 +196,20 @@ nav { display: none; }
     opacity: 0.25 ; /*so it doesnt stand out as much*/
 }
 
+.services {
+    margin-bottom: 4em;
+}
+
 .service {
     max-width: 500px;
     margin: 0 auto;
 }
-
-@media (min-width:800px){
+@media (min-width: 800px){
     .services {
         display: flex; /*this will place the paragraphs next to each other if you put text anwhere else it aligns the whole content*/
-        max-width:1000px;
-        margin: 0 auto;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
     }
      /*prevents overlap no longer intersecting text. looks at sibling and adds 2em to the left*/
     .service + .service {
@@ -190,10 +217,36 @@ nav { display: none; }
     }
 }
 
+.about-me {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+/* .about-me__img {
+    box-shadow: var(--bs);
+}  */
+@media (min-width: 600px) {
+    .about-me{
+        display: grid;
+        grid-template-columns: 1fr 200px;
+        grid-template-areas: 
+            "title img"
+            "subtitle img"
+            "text img";/*formate to see easier and for overlap*/
+            grid-column-gap: 2em;
 
+    }/*The text wont show>:(, haha figured out that the zip file didnt come with text there!*/
 
-
-
-
-
-
+    .section__title--about{
+        grid-area: title;
+    }
+    /* .section__subtitle--about {
+        grid-column: 1 / -1;
+        grid-row:2;
+    } */
+    .about-me__img { 
+        grid-area: img;
+    }
+    /* .about-me__text {
+        grid-area: text;
+    } */
+}
