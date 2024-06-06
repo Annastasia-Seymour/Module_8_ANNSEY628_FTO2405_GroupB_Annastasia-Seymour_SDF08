@@ -138,19 +138,19 @@ header{
 }
 
 .nav {
-    position: fixed;
-    background: var(--clr-dark);
-    color: var(--clr-light);
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-
-    transform: translateX(100%);/*based on the width of itsef which is 100% so itll ony take 50% of it. at 100% it moves completely off screen*/
-    transition: transform 250ms cubic-bezier(.5, 0, .5, 1);
+    .nav {
+        position: fixed;
+        background: var(--clr-dark);
+        color: var(--clr-light);
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        transform: translate(100%);/*based on the width of itsef which is 100% so itll ony take 50% of it. at 100% it moves completely off screen*/
+        transition: transform 250ms cubic-bezier(.5, 0, .5, 1);
 }
-
+}
 .nav__list {
     list-style: none;
     display: flex;
@@ -171,19 +171,41 @@ header{
     color: var(--clr-accent);
 }
 
-/*there are simler ways to make navigation*/
+.nav-toggle {
+    padding: .5em;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    z-index: 1000;
+}
+/*there are simpler ways to make navigation*/
 
-.hamburger{
-    background: var(--clr-dark);
-    width: 2em;
-    height: 3px;
-    border-radius: 1em;
+.hamburger {
     display: block;
     position: relative;
 }
 
-
-
+.hamburger
+.hamburger::before,
+.hamburger::after {
+    background: var(--clr-accent);
+    width: 2em;
+    height: 3px;
+    border-radius: 1em;
+    transition: transform 250ms ease-in-out;
+}
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+.hamburger::before { top: 6px; }
+.hamburger::after { bottom: 6px; }
 
 
 
