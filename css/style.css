@@ -37,6 +37,9 @@
 }
 
 /* General styles */
+html{
+    scroll-behavior: smooth;
+}
 
 body {
     background: var(--clr-light);
@@ -138,7 +141,6 @@ header{
 }
 
 .nav {
-    .nav {
         position: fixed;
         background: var(--clr-dark);
         color: var(--clr-light);
@@ -147,9 +149,9 @@ header{
         left: 0;
         right: 0;
         z-index: 100;
-        transform: translate(100%);/*based on the width of itsef which is 100% so itll ony take 50% of it. at 100% it moves completely off screen*/
+
+        transform: translateX(100%);/*based on the width of itsef which is 100% so itll ony take 50% of it. at 100% it moves completely off screen*/
         transition: transform 250ms cubic-bezier(.5, 0, .5, 1);
-}
 }
 .nav__list {
     list-style: none;
@@ -181,6 +183,30 @@ header{
     top: 1em;
     z-index: 1000;
 }
+.nav-open .nav {
+transform: translateX(0);
+}
+
+.nav-open .nav-toggle {
+    position: fixed;
+}
+
+.nav-open .hamburger {
+    transform: rotate(.625turn);
+}
+
+.nav-open .hamburger::before {
+    transform: rotate(90deg) translateX(-6px);
+}
+
+.nav-open .hamburger::after {
+    opacity: 0;
+}
+
+
+
+
+/*really cool how this is done from hamburger to x*/
 /*there are simpler ways to make navigation*/
 
 .hamburger {
@@ -188,7 +214,7 @@ header{
     position: relative;
 }
 
-.hamburger
+.hamburger,/*almost skipped comma*/
 .hamburger::before,
 .hamburger::after {
     background: var(--clr-accent);
@@ -428,6 +454,16 @@ header{
 }
 /*styling for spacing*/
 
+.portfolio-item-individual {
+    padding: 0 2em 2em;
+    max-width: 1000px;
+    margin: 0 auto;
+}
 
+.portfolio-item-individual p {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 
